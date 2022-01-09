@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Identity.Client;
-
-using System;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Identity.Client;
 using Newtonsoft.Json;
 
 namespace R03PointCardApp.Identity
 {
     public class MicrosoftAuthService : IMicrosoftAuthService
     {
-        private readonly string ClientID = "fa7278f4-5ba1-4985-acad-6b22837d1e01";
+        private readonly string ClientID = "a7dfcd03-6187-479a-bd20-74a17f93cf33";
         private readonly string[] Scopes = { "User.Read" };
         private readonly string GraphUrl = "https://graph.microsoft.com/v1.0/me";
 
