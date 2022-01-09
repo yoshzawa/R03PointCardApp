@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Microsoft.Identity.Client;
 using UIKit;
 
 namespace R03PointCardApp.iOS
@@ -26,6 +27,11 @@ namespace R03PointCardApp.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+            return true;
         }
     }
 }

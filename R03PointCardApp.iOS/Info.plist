@@ -25,7 +25,7 @@
     <key>CFBundleDisplayName</key>
     <string>R03PointCardApp</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.R03PointCardApp</string>
+    <string>jp.jc21.R03PointCardApp</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>
@@ -34,5 +34,18 @@
     <string>R03PointCardApp</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>jp.jc21.R03PointCardApp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msalfa7278f4-5ba1-4985-acad-6b22837d1e01</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
