@@ -23,6 +23,7 @@ namespace R03PointCardApp
         {
             this.microsoftAuthService.Initialize();
             user = await this.microsoftAuthService.OnSignInAsync();
+            message.Text = user.Id;
 
 
         }
