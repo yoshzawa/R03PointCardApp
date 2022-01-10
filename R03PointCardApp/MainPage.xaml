@@ -11,7 +11,8 @@
 
             <Label Text="Microsoftアカウントでログインしてください" FontSize="Title" Padding="30,10,30,10" x:Name="message"/>
         
-        <Button Text="LOGINする" Clicked="Button_Clicked" />
+        <Button Text="LOGINする" Clicked="Button_Clicked" x:Name="loginButton" IsVisible="true"/>
+            <Button Text="LOGOUTする" Clicked="Button_Clicked_CLOSE" x:Name="logoutButton" IsVisible="false"/>
         </StackLayout>
     </StackLayout>
 

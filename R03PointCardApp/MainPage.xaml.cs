@@ -9,7 +9,6 @@ namespace R03PointCardApp
     public partial class MainPage : ContentPage
     {
         private readonly IMicrosoftAuthService microsoftAuthService;
-        private bool isLoading;
         private User user;
         public MainPage()
         {
@@ -18,14 +17,24 @@ namespace R03PointCardApp
 
         }
 
+        public IMicrosoftAuthService MicrosoftAuthService => microsoftAuthService;
+
+        public User User { get => user; set => user = value; }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            this.microsoftAuthService.Initialize();
-            user = await this.microsoftAuthService.OnSignInAsync();
-            message.Text = user.Id;
+            this.MicrosoftAuthService.Initialize();
+            User = await this.MicrosoftAuthService.OnSignInAsync();
+            message.Text = User.Id;
+            logoutButton.IsVisible = true;
+        }
 
-
+        private async void Button_Clicked_CLOSE(object sender, EventArgs e)
+        {
+            await this.MicrosoftAuthService.OnSignOutAsync();
+            user = null;
+            message.Text = "Microsoftアカウントでログインしてください";
+            logoutButton.IsVisible = false;
         }
 
     }
