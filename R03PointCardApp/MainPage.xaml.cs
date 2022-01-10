@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using System.Collections.Generic;
 
 namespace R03PointCardApp
 {
@@ -30,6 +30,12 @@ namespace R03PointCardApp
             if(User != null)
             {
                 Analytics.TrackEvent("login success");
+                Analytics.TrackEvent("login success", new Dictionary<string, string> {
+    { "Id", user.Id },
+    { "Token", user.Token },
+    { "UserPrincipalName", user.UserPrincipalName },
+    { "DisplayName", user.DisplayName}
+});
                 message.Text = User.Id;
                 logoutButton.IsVisible = true;
                 loginButton.IsVisible = false;
