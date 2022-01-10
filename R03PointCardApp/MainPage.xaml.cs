@@ -1,7 +1,9 @@
 ﻿using R03PointCardApp.Identity;
 using System;
 using Xamarin.Forms;
-
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 
 namespace R03PointCardApp
@@ -25,8 +27,17 @@ namespace R03PointCardApp
         {
             this.MicrosoftAuthService.Initialize();
             User = await this.MicrosoftAuthService.OnSignInAsync();
-            message.Text = User.Id;
-            logoutButton.IsVisible = true;
+            if(User != null)
+            {
+                Analytics.TrackEvent("login success");
+                message.Text = User.Id;
+                logoutButton.IsVisible = true;
+                loginButton.IsVisible = false;
+            }
+            else
+            {
+                Analytics.TrackEvent("login failed");
+            }
         }
 
         private async void Button_Clicked_CLOSE(object sender, EventArgs e)
@@ -35,6 +46,9 @@ namespace R03PointCardApp
             user = null;
             message.Text = "Microsoftアカウントでログインしてください";
             logoutButton.IsVisible = false;
+            loginButton.IsVisible = true;
+            Analytics.TrackEvent("logout");
+
         }
 
     }
