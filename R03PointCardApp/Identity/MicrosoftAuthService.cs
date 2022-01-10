@@ -12,7 +12,6 @@ namespace R03PointCardApp.Identity
         private readonly string ClientID = "a7dfcd03-6187-479a-bd20-74a17f93cf33";
         private readonly string[] Scopes = { "User.Read" };
         private readonly string GraphUrl = "https://graph.microsoft.com/v1.0/me";
-
         private IPublicClientApplication publicClientApplication;
 
         public void Initialize()
