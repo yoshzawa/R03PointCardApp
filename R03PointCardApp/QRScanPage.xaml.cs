@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.AppCenter.Analytics;
 
 namespace R03PointCardApp
 {
@@ -23,8 +24,11 @@ namespace R03PointCardApp
             Device.BeginInvokeOnMainThread(async () =>
             {
                 zxing.IsAnalyzing = false;  //読み取り停止
-                await DisplayAlert("通知", "次の値を読み取りました：" + result.Text, "OK");
-                if(parent != null)
+                                            // await DisplayAlert("通知", "次の値を読み取りました：" + result.Text, "OK");
+                Analytics.TrackEvent("次の値を読み取りました", new Dictionary<string, string> {
+    { "result", result.Text }
+});
+                if (parent != null)
                 {
                     parent.setTENPO_NO(result.Text);
                 }

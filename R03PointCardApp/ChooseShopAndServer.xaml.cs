@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter.Analytics;
-
+using System.Net.Http;
+using System.Collections.Specialized;
+using System.Web;
 
 namespace R03PointCardApp
 {
@@ -16,6 +18,8 @@ namespace R03PointCardApp
     public partial class ChooseShopAndServer : ContentPage
     {
         private User user = null;
+        string TENPO_NO = null;
+
         public ChooseShopAndServer()
         {
             InitializeComponent();
@@ -37,7 +41,6 @@ namespace R03PointCardApp
 
         }
 
-        string TENPO_NO = null;
         internal void setTENPO_NO(string text)
         {
             TENPO_NO = text;
@@ -48,13 +51,19 @@ namespace R03PointCardApp
             throw new NotImplementedException();
         }
 
-        public static implicit operator ChooseShopAndServer(NavigationPage v)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
+            String url = "http://192.168.54.190:8080/R03JsonKadai00/";
+            await DisplayAlert("URL" ,url + "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id ,"OK");
+            HttpClient client = new HttpClient();
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+            Uri uri = new Uri(string.Format(url, string.Empty));
+            HttpResponseMessage response = await client.GetAsync(uri+ "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
+            string s = await response.Content.ReadAsStringAsync();
+            await DisplayAlert("response", s, "OK");
+
 
         }
     }
