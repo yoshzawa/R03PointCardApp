@@ -12,10 +12,32 @@
                 <Label Text="user id:unknown"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" x:Name="title"/>
-        
+                <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
+
             </StackLayout>
 
-
+            <Picker x:Name="picker"
+        Title="サーバーを選択"
+        TitleColor="Red">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>完成例</x:String>
+                        <x:String>TEAM01</x:String>
+                        <x:String>TEAM02</x:String>
+                        <x:String>TEAM03</x:String>
+                        <x:String>TEAM04</x:String>
+                        <x:String>TEAM05</x:String>
+                        <x:String>TEAM06</x:String>
+                        <x:String>TEAM07</x:String>
+                        <x:String>TEAM08</x:String>
+                        <x:String>TEAM09</x:String>
+                        <x:String>TEAM10</x:String>
+                        <x:String>TEAM11</x:String>
+                        <x:String>TEAM12</x:String>
+                        <x:String>TEAM13</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

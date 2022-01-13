@@ -26,6 +26,9 @@ namespace R03PointCardApp
             title.Text = "User : " + u.DisplayName;
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
 
+        }
     }
 }
