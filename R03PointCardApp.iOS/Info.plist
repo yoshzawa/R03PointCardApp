@@ -32,10 +32,11 @@
 	<string>R03PointCardApp</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>CFBundleURLTypes</key>
+
 	<key>NSCameraUsageDescription</key>
 	<string>カメラを利用してスキャンします。</string>
 
+	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
