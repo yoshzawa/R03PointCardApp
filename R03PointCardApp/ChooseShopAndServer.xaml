@@ -9,9 +9,14 @@
             </Frame>
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-                <Label Text="user id:unknown"
+                <Label Text="ユーザーが指定されていません"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" x:Name="title"/>
+                HorizontalOptions="CenterAndExpand" x:Name="labelUser" />
+                
+                <Label Text="店舗が指定されていません"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" x:Name="labelTenpo" />
+
                 <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
 
             </StackLayout>
