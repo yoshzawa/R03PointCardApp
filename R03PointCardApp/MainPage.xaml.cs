@@ -29,7 +29,6 @@ namespace R03PointCardApp
             User = await this.MicrosoftAuthService.OnSignInAsync();
             if(User != null)
             {
-                Analytics.TrackEvent("login success");
                 Analytics.TrackEvent("login success", new Dictionary<string, string> {
     { "Id", user.Id },
     { "Token", user.Token },

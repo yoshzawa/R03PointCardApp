@@ -15,7 +15,8 @@
                 <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
 
             </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+            
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
 
                 <Picker x:Name="picker"         Title="サーバーを選択"         TitleColor="Red">
                 <Picker.ItemsSource>

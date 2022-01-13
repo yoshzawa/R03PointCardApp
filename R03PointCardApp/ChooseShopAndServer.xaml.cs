@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.AppCenter.Analytics;
+
 
 namespace R03PointCardApp
 {
@@ -28,6 +30,8 @@ namespace R03PointCardApp
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent("Button_Clicked");
+
             Navigation.PushAsync(new QRScanPage());
 
         }
