@@ -31,5 +31,10 @@ namespace R03PointCardApp
             Navigation.PushAsync(new QRScanPage());
 
         }
+
+        public static implicit operator ChooseShopAndServer(NavigationPage v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
