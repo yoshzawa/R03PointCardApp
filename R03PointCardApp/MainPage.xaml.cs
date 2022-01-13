@@ -39,6 +39,10 @@ namespace R03PointCardApp
                 message.Text = User.Id;
                 logoutButton.IsVisible = true;
                 loginButton.IsVisible = false;
+                ChooseShopAndServer page2 = new ChooseShopAndServer();
+                await Navigation.PushAsync(page2);
+                page2.setUser(user);
+
             }
             else
             {
