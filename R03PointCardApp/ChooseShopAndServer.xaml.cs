@@ -31,9 +31,21 @@ namespace R03PointCardApp
         private void Button_Clicked(object sender, EventArgs e)
         {
             Analytics.TrackEvent("Button_Clicked");
+            QRScanPage qr = new QRScanPage();
+            Navigation.PushAsync(qr );
+            qr.setParent(this);
 
-            Navigation.PushAsync(new QRScanPage());
+        }
 
+        string TENPO_NO = null;
+        internal void setTENPO_NO(string text)
+        {
+            TENPO_NO = text;
+        }
+
+        private object QRScanPage()
+        {
+            throw new NotImplementedException();
         }
 
         public static implicit operator ChooseShopAndServer(NavigationPage v)

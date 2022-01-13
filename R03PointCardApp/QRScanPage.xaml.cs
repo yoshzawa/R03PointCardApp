@@ -12,6 +12,8 @@ namespace R03PointCardApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QRScanPage : ContentPage
     {
+        private ChooseShopAndServer parent= null;
+
         public QRScanPage()
         {
             InitializeComponent();
@@ -22,7 +24,11 @@ namespace R03PointCardApp
             {
                 zxing.IsAnalyzing = false;  //読み取り停止
                 await DisplayAlert("通知", "次の値を読み取りました：" + result.Text, "OK");
-                zxing.IsAnalyzing = true;   //読み取り再開
+                if(parent != null)
+                {
+                    parent.setTENPO_NO(result.Text);
+                }
+                await Navigation.PopAsync();
             });
         }
 
@@ -32,6 +38,10 @@ namespace R03PointCardApp
             zxing.IsScanning = true;
         }
 
+        internal void setParent(ChooseShopAndServer chooseShopAndServer)
+        {
+            parent = chooseShopAndServer;
+        }
         protected override void OnDisappearing()
         {
             zxing.IsScanning = false;
