@@ -36,5 +36,10 @@ namespace R03PointCardApp
         {
             throw new NotImplementedException();
         }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -15,10 +15,9 @@
                 <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
 
             </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
 
-            <Picker x:Name="picker"
-        Title="サーバーを選択"
-        TitleColor="Red">
+                <Picker x:Name="picker"         Title="サーバーを選択"         TitleColor="Red">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>完成例</x:String>
@@ -38,6 +37,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+                <Button Text="サーバーに接続する" Clicked="Button_Clicked_1" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
