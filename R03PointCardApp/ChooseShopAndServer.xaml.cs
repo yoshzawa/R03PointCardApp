@@ -77,7 +77,7 @@ namespace R03PointCardApp
                 NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
                 Uri uri = new Uri(string.Format(url, string.Empty));
                 HttpResponseMessage response = await client.GetAsync(uri + "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
-                if (response.StatusCode.Equals(200))
+                if (response.IsSuccessStatusCode)
                 {
                     string s = await response.Content.ReadAsStringAsync();
                     await DisplayAlert("response", s, "OK");
