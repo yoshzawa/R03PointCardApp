@@ -11,6 +11,7 @@ using Microsoft.AppCenter.Analytics;
 using System.Net.Http;
 using System.Collections.Specialized;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace R03PointCardApp
 {
@@ -81,6 +82,19 @@ namespace R03PointCardApp
                 {
                     string s = await response.Content.ReadAsStringAsync();
                     await DisplayAlert("response", s, "OK");
+
+                    StackLayout sl = new StackLayout();
+                    result = sl;
+
+                    JsonPoint sp = JsonPoint.getPoint(s);
+
+                    Label pointLabel = new Label();
+                    pointLabel.Text="ポイントは" + sp.point + "ポイントです"
+
+                    result.Children.Add(pointLabel);
+
+
+
                 }
                 else
                 {
@@ -89,6 +103,20 @@ namespace R03PointCardApp
 
 
             }
+        }
+    }
+
+    internal class JsonPoint
+    {
+        public int point
+        {
+            get;
+            set;
+        }
+        internal static JsonPoint getPoint(string s)
+        {
+            return JsonConvert.DeserializeObject<JsonPoint>(s);
+
         }
     }
 }

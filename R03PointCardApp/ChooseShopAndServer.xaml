@@ -19,6 +19,10 @@
 
                 <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
 
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="result">
+
+                </StackLayout>
+
             </StackLayout>
             
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
