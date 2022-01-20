@@ -89,7 +89,7 @@ namespace R03PointCardApp
                     JsonPoint sp = JsonPoint.getPoint(s);
 
                     Label pointLabel = new Label();
-                    pointLabel.Text="ポイントは" + sp.point + "ポイントです"
+                    pointLabel.Text = "ポイントは" + sp.point + "ポイントです";
 
                     result.Children.Add(pointLabel);
 
