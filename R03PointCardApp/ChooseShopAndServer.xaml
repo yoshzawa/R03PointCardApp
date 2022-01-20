@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="R03PointCardApp.ChooseShopAndServer">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="ポイント管理アプリ" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                <Label Text="ユーザーが指定されていません"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" x:Name="labelUser" />
+                
+                <Label Text="店舗が指定されていません"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" x:Name="labelTenpo" />
+
+                <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
+
+            </StackLayout>
+            
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
+
+                <Picker x:Name="picker"         Title="サーバーを選択"         TitleColor="Red">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>完成例</x:String>
+                        <x:String>TEAM01</x:String>
+                        <x:String>TEAM02</x:String>
+                        <x:String>TEAM03</x:String>
+                        <x:String>TEAM04</x:String>
+                        <x:String>TEAM05</x:String>
+                        <x:String>TEAM06</x:String>
+                        <x:String>TEAM07</x:String>
+                        <x:String>TEAM08</x:String>
+                        <x:String>TEAM09</x:String>
+                        <x:String>TEAM10</x:String>
+                        <x:String>TEAM11</x:String>
+                        <x:String>TEAM12</x:String>
+                        <x:String>TEAM13</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+                <Button Text="サーバーに接続する" Clicked="Button_Clicked_1" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
