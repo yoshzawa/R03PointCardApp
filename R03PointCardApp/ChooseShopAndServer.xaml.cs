@@ -84,6 +84,9 @@ namespace R03PointCardApp
                     await DisplayAlert("response", s, "OK");
 
                     StackLayout sl = new StackLayout();
+                    sl.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                    sl.VerticalOptions = LayoutOptions.CenterAndExpand;
+                    sl.BackgroundColor = Color.Azure;
                     result = sl;
 
                     JsonPoint sp = JsonPoint.getPoint(s);

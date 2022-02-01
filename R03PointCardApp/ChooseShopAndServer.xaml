@@ -19,7 +19,11 @@
 
                 <Button Text="店舗のQRを読み取ります" Clicked="Button_Clicked" />
 
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="result">
+                <StackLayout 
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Aqua"
+                    x:Name="result">
+                    <Label Text="ここに結果を表示します" />
 
                 </StackLayout>
 
