@@ -1,10 +1,5 @@
 ﻿using R03PointCardApp.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter.Analytics;
@@ -75,7 +70,6 @@ namespace R03PointCardApp
                 String url = urls[picker.SelectedIndex];
                 await DisplayAlert("URL", url + "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id, "OK");
                 HttpClient client = new HttpClient();
-                NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
                 Uri uri = new Uri(string.Format(url, string.Empty));
                 HttpResponseMessage response = await client.GetAsync(uri + "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
                 if (response.IsSuccessStatusCode)
@@ -87,7 +81,7 @@ namespace R03PointCardApp
                     sl.HorizontalOptions = LayoutOptions.CenterAndExpand;
                     sl.VerticalOptions = LayoutOptions.CenterAndExpand;
                     sl.BackgroundColor = Color.Azure;
-                    result = sl;
+//                    result = sl;
 
                     JsonPoint sp = JsonPoint.getPoint(s);
 
@@ -100,11 +94,15 @@ namespace R03PointCardApp
                     response = await client.GetAsync(uri + "getTicketList?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
                     if (response.IsSuccessStatusCode)
                     {
-                        string s2 = await response.Content.ReadAsStringAsync();
-                        await DisplayAlert("response", s2, "OK");
-                    }
+                            string s2 = await response.Content.ReadAsStringAsync();
+                            await DisplayAlert("response", s2, "OK");
                     }
                     else
+                    {
+                        await DisplayAlert("getTicketListを唱えた！しかし、何も起きなかった", "status=" + response.StatusCode.ToString(), "OK");
+                    }
+                }
+                else
                 {
                     await DisplayAlert("へんじがない。ただのしかばねのようだ", "status=" + response.StatusCode.ToString(), "OK");
                 }
