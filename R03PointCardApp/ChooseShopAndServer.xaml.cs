@@ -93,10 +93,14 @@ namespace R03PointCardApp
 
                     result.Children.Add(pointLabel);
 
-
-
-                }
-                else
+                    await DisplayAlert("URL", url + "getTicketList?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id, "OK");
+                    response = await client.GetAsync(uri + "getTicketList?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string s = await response.Content.ReadAsStringAsync();
+                        await DisplayAlert("response", s, "OK");
+                    }
+                    else
                 {
                     await DisplayAlert("へんじがない。ただのしかばねのようだ", "status=" + response.StatusCode.ToString(), "OK");
                 }
