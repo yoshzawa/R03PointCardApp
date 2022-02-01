@@ -97,8 +97,9 @@ namespace R03PointCardApp
                     response = await client.GetAsync(uri + "getTicketList?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
                     if (response.IsSuccessStatusCode)
                     {
-                        string s = await response.Content.ReadAsStringAsync();
-                        await DisplayAlert("response", s, "OK");
+                        string s2 = await response.Content.ReadAsStringAsync();
+                        await DisplayAlert("response", s2, "OK");
+                    }
                     }
                     else
                 {
