@@ -40,7 +40,7 @@ namespace R03PointCardApp
         internal void setTENPO_NO(string text)
         {
             TENPO_NO = text;
-            labelTenpo.Text = "Tenpo : " +text;
+            labelTenpo.Text = "Tenpo : " + text;
 
         }
 
@@ -81,7 +81,7 @@ namespace R03PointCardApp
                     sl.HorizontalOptions = LayoutOptions.CenterAndExpand;
                     sl.VerticalOptions = LayoutOptions.CenterAndExpand;
                     sl.BackgroundColor = Color.Azure;
-//                    result = sl;
+                    //                    result = sl;
 
                     JsonPoint sp = JsonPoint.getPoint(s);
 
@@ -94,8 +94,18 @@ namespace R03PointCardApp
                     response = await client.GetAsync(uri + "getTicketList?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id);
                     if (response.IsSuccessStatusCode)
                     {
-                            string s2 = await response.Content.ReadAsStringAsync();
-                            await DisplayAlert("response", s2, "OK");
+                        string s2 = await response.Content.ReadAsStringAsync();
+                        await DisplayAlert("response", s2, "OK");
+                        JsonTicketList ticketList = JsonTicketList.getTicketList(s2);
+                        JsonTicket[] r = ticketList.ticketList;
+                        foreach (JsonTicket jt in r)
+                        {
+                            Label ticketLabel = new Label();
+                            ticketLabel.Text = jt.OptName +"を"+ jt.POINT + "ポイントで交換できます";
+
+                            result.Children.Add(ticketLabel);
+                        }
+
                     }
                     else
                     {
@@ -125,4 +135,23 @@ namespace R03PointCardApp
 
         }
     }
+    public class JsonTicketList
+    {
+        public JsonTicket[] ticketList { get; set; }
+
+        internal static JsonTicketList getTicketList(string s)
+        {
+            return JsonConvert.DeserializeObject<JsonTicketList>(s);
+        }
+    }
+
+    public class JsonTicket
+    {
+        public int ID { get; set; }
+        public string OptName { get; set; }
+        public int POINT { get; set; }
+    }
+
+
+
 }
