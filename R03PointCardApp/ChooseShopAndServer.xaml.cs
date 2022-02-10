@@ -67,7 +67,13 @@ namespace R03PointCardApp
                     "http://192.168.54.190:8080/R03JsonKadai12/",
                     "http://192.168.54.190:8080/R03JsonKadai13/",
                 };
-                String url = urls[picker.SelectedIndex];
+                int selectedIndex = picker.SelectedIndex;
+                if (selectedIndex < 0)
+                {
+                    selectedIndex = 0;
+                    picker.SelectedIndex = 0;
+                }
+                String url = urls[selectedIndex];
                 await DisplayAlert("URL", url + "getPoint?TENPO_ID=" + TENPO_NO + "&USER_ID=" + user.Id, "OK");
                 HttpClient client = new HttpClient();
                 Uri uri = new Uri(string.Format(url, string.Empty));
@@ -97,17 +103,18 @@ namespace R03PointCardApp
                         string s2 = await response.Content.ReadAsStringAsync();
                         await DisplayAlert("response", s2, "OK");
                         JsonTicketList ticketList = JsonTicketList.getTicketList(s2);
-                        JsonTicket[] r = ticketList.ticketList;
-/*
+                        await DisplayAlert("progress", "job1", "OK");
+
+                        JsonTicket[] r = ticketList.ticketArray;
+                        await DisplayAlert("progress", "job2", "OK");
+
                         foreach (JsonTicket jt in r)
                         {
                             Label ticketLabel = new Label();
                             ticketLabel.Text = jt.OptName +"を"+ jt.POINT + "ポイントで交換できます";
-
+                            await DisplayAlert("progress", "job3", "OK");
                             result.Children.Add(ticketLabel);
                         }
-*/
-
                     }
                     else
                     {
@@ -139,7 +146,7 @@ namespace R03PointCardApp
     }
     public class JsonTicketList
     {
-        public JsonTicket[] ticketList { get; set; }
+        public JsonTicket[] ticketArray { get; set; }
 
         internal static JsonTicketList getTicketList(string s)
         {
