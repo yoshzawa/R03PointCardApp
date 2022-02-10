@@ -98,6 +98,7 @@ namespace R03PointCardApp
                         await DisplayAlert("response", s2, "OK");
                         JsonTicketList ticketList = JsonTicketList.getTicketList(s2);
                         JsonTicket[] r = ticketList.ticketList;
+/*
                         foreach (JsonTicket jt in r)
                         {
                             Label ticketLabel = new Label();
@@ -105,6 +106,7 @@ namespace R03PointCardApp
 
                             result.Children.Add(ticketLabel);
                         }
+*/
 
                     }
                     else
