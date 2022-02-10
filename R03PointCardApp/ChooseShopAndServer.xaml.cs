@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Collections.Specialized;
 using System.Web;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace R03PointCardApp
 {
@@ -105,7 +106,7 @@ namespace R03PointCardApp
                         JsonTicketList ticketList = JsonTicketList.getTicketList(s2);
                         await DisplayAlert("progress", "job1", "OK");
 
-                        JsonTicket[] r = ticketList.ticketArray;
+                        List<JsonTicket> r = ticketList.ticketArray;
                         await DisplayAlert("progress", "job2", "OK");
 
                         foreach (JsonTicket jt in r)
@@ -146,7 +147,7 @@ namespace R03PointCardApp
     }
     public class JsonTicketList
     {
-        public JsonTicket[] ticketArray { get; set; }
+        public List<JsonTicket> ticketArray { get; set; }
 
         internal static JsonTicketList getTicketList(string s)
         {
